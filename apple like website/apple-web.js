@@ -31,8 +31,8 @@ overlay.addEventListener("click", () => {
 const storeBtn = document.querySelector("nav .navbar-list li a.store-btn");
 const storeMenu = document.querySelector(".navbar-container .store-menu");
 const navbarContainer = document.querySelector(".navbar-container");
-storeBtn.addEventListener("mouseenter", () => {
-    storeMenu.classList.remove("hide");
+const hideItems = ()=>{
+    storeMenu.classList.add("hide");
     overlay.classList.add("show");
     macMenu.classList.add("hide");
     iphoneMenu.classList.add("hide");
@@ -40,6 +40,11 @@ storeBtn.addEventListener("mouseenter", () => {
     watchMenu.classList.add("hide");
     airpodMenu.classList.add("hide");
     accessMenu.classList.add("hide");
+}
+storeBtn.addEventListener("mouseenter", () => {
+    hideItems();
+    storeMenu.classList.remove("hide");
+
 })
 storeMenu.addEventListener("mouseleave", () => {
     storeMenu.classList.add("hide");
@@ -49,14 +54,8 @@ storeMenu.addEventListener("mouseleave", () => {
 const macBtn = document.querySelector("nav .navbar-list li a.mac-btn");
 const macMenu = document.querySelector(".navbar-container .mac-menu");
 macBtn.addEventListener("mouseenter", () => {
+    hideItems();
     macMenu.classList.remove("hide");
-    overlay.classList.add("show");
-    storeMenu.classList.add("hide");
-    iphoneMenu.classList.add("hide");
-    ipadMenu.classList.add("hide");
-    watchMenu.classList.add("hide");
-    airpodMenu.classList.add("hide");
-    accessMenu.classList.add("hide");
 })
 macMenu.addEventListener("mouseleave", () => {
     macMenu.classList.add("hide");
@@ -66,14 +65,8 @@ macMenu.addEventListener("mouseleave", () => {
 const iphoneBtn = document.querySelector("nav .navbar-list li a.iphone-btn");
 const iphoneMenu = document.querySelector(".navbar-container .iphone-menu");
 iphoneBtn.addEventListener("mouseenter", () => {
+    hideItems();
     iphoneMenu.classList.remove("hide");
-    overlay.classList.add("show");
-    storeMenu.classList.add("hide");
-    macMenu.classList.add("hide");
-    ipadMenu.classList.add("hide");
-    watchMenu.classList.add("hide");
-    airpodMenu.classList.add("hide");
-    accessMenu.classList.add("hide");
 })
 iphoneMenu.addEventListener("mouseleave", () => {
     iphoneMenu.classList.add("hide");
@@ -84,14 +77,8 @@ iphoneMenu.addEventListener("mouseleave", () => {
 const ipadBtn = document.querySelector("nav .navbar-list li a.ipad-btn");
 const ipadMenu = document.querySelector(".navbar-container .ipad-menu");
 ipadBtn.addEventListener("mouseenter", () => {
+    hideItems();
     ipadMenu.classList.remove("hide");
-    overlay.classList.add("show");
-    storeMenu.classList.add("hide");
-    macMenu.classList.add("hide");
-    iphoneMenu.classList.add("hide");
-    watchMenu.classList.add("hide");
-    airpodMenu.classList.add("hide");
-    accessMenu.classList.add("hide");
 })
 iphoneMenu.addEventListener("mouseleave", () => {
     ipadMenu.classList.add("hide");
@@ -101,14 +88,8 @@ iphoneMenu.addEventListener("mouseleave", () => {
 const watchBtn = document.querySelector("nav .navbar-list li a.watch-btn");
 const watchMenu = document.querySelector(".navbar-container .watch-menu");
 watchBtn.addEventListener("mouseenter", () => {
+    hideItems();
     watchMenu.classList.remove("hide");
-    overlay.classList.add("show");
-    storeMenu.classList.add("hide");
-    macMenu.classList.add("hide");
-    iphoneMenu.classList.add("hide");
-    ipadMenu.classList.add("hide");
-    airpodMenu.classList.add("hide");
-    accessMenu.classList.add("hide");
 })
 watchMenu.addEventListener("mouseleave", () => {
     watchMenu.classList.add("hide");
@@ -118,14 +99,8 @@ watchMenu.addEventListener("mouseleave", () => {
 const airpodBtn = document.querySelector("nav .navbar-list li a.airpod-btn");
 const airpodMenu = document.querySelector(".navbar-container .airpod-menu");
 airpodBtn.addEventListener("mouseenter", () => {
+    hideItems();
     airpodMenu.classList.remove("hide");
-    overlay.classList.add("show");
-    storeMenu.classList.add("hide");
-    macMenu.classList.add("hide");
-    iphoneMenu.classList.add("hide");
-    ipadMenu.classList.add("hide");
-    watchMenu.classList.add("hide");
-    accessMenu.classList.add("hide");
 })
 airpodMenu.addEventListener("mouseleave", () => {
     airpodMenu.classList.add("hide");
@@ -135,14 +110,8 @@ airpodMenu.addEventListener("mouseleave", () => {
 const accessBtn = document.querySelector("nav .navbar-list li a.access-btn");
 const accessMenu = document.querySelector(".navbar-container .access-menu");
 accessBtn.addEventListener("mouseenter", () => {
+    hideItems();
     accessMenu.classList.remove("hide");
-    overlay.classList.add("show");
-    storeMenu.classList.add("hide");
-    macMenu.classList.add("hide");
-    iphoneMenu.classList.add("hide");
-    ipadMenu.classList.add("hide");
-    watchMenu.classList.add("hide");
-    airpodMenu.classList.add("hide");
 })
 accessMenu.addEventListener("mouseleave", () => {
     accessMenu.classList.add("hide");
@@ -152,15 +121,8 @@ accessMenu.addEventListener("mouseleave", () => {
 const supportBtn = document.querySelector("nav .navbar-list li a.support-btn");
 const supportMenu = document.querySelector(".navbar-container .support-menu");
 supportBtn.addEventListener("mouseenter", () => {
+    hideItems();
     supportMenu.classList.remove("hide");
-    overlay.classList.add("show");
-    storeMenu.classList.add("hide");
-    macMenu.classList.add("hide");
-    iphoneMenu.classList.add("hide");
-    ipadMenu.classList.add("hide");
-    watchMenu.classList.add("hide");
-    airpodMenu.classList.add("hide");
-    accessMenu.classList.add("hide");
 })
 supportMenu.addEventListener("mouseleave", () => {
     supportMenu.classList.add("hide");
@@ -274,25 +236,6 @@ slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
 const mobileSlideWidth = mobileSlides[index].clientWidth;
 slideBoxMobile.style.transform = `translateX(${-mobileSlideWidth * index}px)`;
 
-// dot changing process//
-const dots = document.querySelectorAll(".dots-list li");
-document.addEventListener("DOMContentLoaded", () => {
-    dots[0].classList.add("active");
-  });
-  
-const updateDot = (index)=>{
-    dots.forEach((dot,i) => {
-     if(i === index - 1){
-        dot.classList.add("active");
-        dot.style.color = "#1b1b1b";
-     }
-     else{
-        dot.classList.remove("active");
-        dot.style.color = "#616161"; 
-     }
-    })
-}
-
 // transition effct for slides //
   
 const startSlide = () => {
@@ -309,14 +252,14 @@ slideBox.addEventListener('transitionend', () => {
         slideBox.style.transition = 'none';
         index = 1;
         slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
+        updateDot(index);
     }
-
     if (slides[index].id === lastClone.id) {
         slideBox.style.transition = 'none';
         index = slides.length - 2;
         slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
+        updateDot(index);
     }
-    updateDot(index);
 })
 // mobile trasition effects //
 slideBoxMobile.addEventListener('transitionend', () => {
@@ -337,22 +280,16 @@ slideBoxMobile.addEventListener('transitionend', () => {
 
 moveToNextSlide = () => {
     slides = getslides();
-    if (index >= slides.length - 1) return;
-    if (index >= mobileSlides.length - 1)return;
+    if (index >= slides.length-1) return;
+    if (index >= mobileSlides.length-1)return;
     index++;
-    slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
-    slideBox.style.transition = '0.7s';
-    slideBoxMobile.style.transform = `translateX(${-mobileSlideWidth * index}px)`;
-    slideBoxMobile.style.transition = '0.7s'
+    dot_position();
     updateDot(index);
 }
 moveToPrevSlide = () => {
     if (index <= 0) return;
     index--;
-    slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
-    slideBox.style.transition = '0.7s';
-    slideBoxMobile.style.transform = `translateX(${-mobileSlideWidth * index}px)`;
-    slideBoxMobile.style.transition = '0.7s';
+    dot_position();
     updateDot(index);
 }
 
@@ -378,6 +315,24 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     
 })
+// dot changing process//
+const dots = document.querySelectorAll(".dots-list li");
+document.addEventListener("DOMContentLoaded", () => {
+    dots[0].classList.add("active");
+  });
+  
+const updateDot = (index)=>{
+    dots.forEach((dot,i) => {
+     if(i === index - 1){
+        dot.classList.add("active");
+        dot.style.color = "#1b1b1b";
+     }
+     else{
+        dot.classList.remove("active");
+        dot.style.color = "#616161"; 
+     }
+    })
+}
 // dots animation //
 const dot1 = document.querySelector(".dots-list .dot-1");
 const dot2 = document.querySelector(".dots-list .dot-2");
@@ -386,57 +341,49 @@ const dot4 = document.querySelector(".dots-list .dot-4");
 const dot5 = document.querySelector(".dots-list .dot-5");
 
 // dots click slide animation //
+const dot_position = ()=>{
+    slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
+    slideBox.style.transition = '0.7s';
+    slideBoxMobile.style.transform = `translateX(${-mobileSlideWidth * index}px)`;
+    slideBoxMobile.style.transition = '0.7s';
+}
 
 dot1.addEventListener("click",()=> {
     slides = getslides();
     mobileSlides = getslides();
     index = 1;
-    slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
-    slideBox.style.transition = '0.7s';
-    slideBoxMobile.style.transform = `translateX(${-mobileSlideWidth * index}px)`;
-    slideBoxMobile.style.transition = '0.7s';
+    dot_position();
     updateDot(index);
 })
 dot2.addEventListener("click",()=> {
     slides = getslides();
     mobileSlides = getslides();
     index = 2;
-    slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
-    slideBox.style.transition = '0.7s';
-    slideBoxMobile.style.transform = `translateX(${-mobileSlideWidth * index}px)`;
-    slideBoxMobile.style.transition = '0.7s';
+    dot_position();
     updateDot(index);
 })
 dot3.addEventListener("click",()=> {
     slides = getslides();
     mobileSlides = getslides();
     index = 3;
-    slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
-    slideBox.style.transition = '0.7s';
-    slideBoxMobile.style.transform = `translateX(${-mobileSlideWidth * index}px)`;
-    slideBoxMobile.style.transition = '0.7s';
+    dot_position();
     updateDot(index);
 })
 dot4.addEventListener("click",()=> {
     slides = getslides();
     mobileSlides = getslides();
     index = 4;
-    slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
-    slideBox.style.transition = '0.7s';
-    slideBoxMobile.style.transform = `translateX(${-mobileSlideWidth * index}px)`;
-    slideBoxMobile.style.transition = '0.7s';
+    dot_position();
     updateDot(index);
 })
 dot5.addEventListener("click",()=> {
     slides = getslides();
     mobileSlides = getslides();
     index = 5;
-    slideBox.style.transform = `translateX(${-slidewidth * index}px)`;
-    slideBox.style.transition = '0.7s';
-    slideBoxMobile.style.transform = `translateX(${-mobileSlideWidth * index}px)`;
-    slideBoxMobile.style.transition = '0.7s';
+    dot_position();
     updateDot(index);
 })
 // dots click slide color animation //
 
 startSlide();
+
