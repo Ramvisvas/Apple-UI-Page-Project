@@ -1,2 +1,2 @@
 # apple-like-website
- a Look a like webpage demo apple 
+Responsive Landing of Apple webpage with functioning navbar,carousal slides,product containers,also responsive in mobile version.  
